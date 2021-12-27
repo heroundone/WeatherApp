@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <div id="content">
+        <span>Select how you would like to search for a location's weather.</span>
+        <div id="radio">
+            <span>
+                <input type="radio" id="searchOption1"
+                       name="search" value="city">
+                <label for="searchOption1">City</label>
+            </span>
+    
+            <span>
+                <input type="radio" id="searchOption2"
+                       name="search" value="Zip Code">
+                <label for="searchOption2">Zip Code</label>
+            </span>
+    
+            <input type="radio" id="searchOption3"
+                    name="search" value="Coordinates">
+            <label for="searchOption3">Coordinates</label>
+            </span>
+            
+            <span>
+                <input id="submitOption" type="submit" value="Submit">
+            </span>
+         </div>
+        <div>
+            <form id="searchForm">
+    
+            </form>
+    
+        </div>
+        <div id="weatherDisplay">
+            <p id="location"></p>
+            <P id="description"></P>
+            <P id="temp"></P>
+            <P id="windSpeed"></P>
+        </div>
+    </div>
+</body>
+</html>

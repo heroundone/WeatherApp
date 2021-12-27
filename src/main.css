@@ -1,0 +1,16 @@
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+#searchForm {
+    display: flex;
+    gap: 5px;
+}
+
+img {
+    height: 300px;
+    width: auto;
+}
