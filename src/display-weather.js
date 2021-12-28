@@ -1,12 +1,23 @@
 /* eslint-disable no-unused-vars */
 
-const createWeatherObject = function(weatherData) {
+const createWeatherObjectImperial = function(weatherData) {
   let weather = {
     location : 'Location:' + ' ' + weatherData.name,
     conditions : 'Conditions:' + ' ' + weatherData.weather[0].main,
     current_temp : weatherData.main.temp + ' ' + 'Fahrenheit',
-    windVelocity : 'Wind Velocity:' + ' ' + weatherData.wind.speed + ' ' + 'MPH',
+    windVelocity : 'Wind Velocity:' + ' ' + weatherData.wind.speed + ' ' + 'mph',
     units : 'imperial'
+  };
+  return weather;
+};
+
+const createWeatherObjectMetric = function(weatherData) {
+  let weather = {
+    location : 'Location:' + ' ' + weatherData.name,
+    conditions : 'Conditions:' + ' ' + weatherData.weather[0].main,
+    current_temp : weatherData.main.temp + ' ' + 'Celsius',
+    windVelocity : 'Wind Velocity:' + ' ' + weatherData.wind.speed + ' ' + 'kph',
+    units : 'metric'
   };
   return weather;
 };
@@ -38,4 +49,4 @@ const displayWeather = async function(weatherObject, arrayOfElements) {
   form.appendChild(image);
 };
 
-export {createWeatherObject, getDisplayArea, displayWeather};
+export {createWeatherObjectImperial, createWeatherObjectMetric, getDisplayArea, displayWeather};

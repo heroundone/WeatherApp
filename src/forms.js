@@ -12,9 +12,10 @@ const generator = (() => {
     attributeHelper(statecode, {"type":"text", "placeholder":"state code", "name":"state"});
     const countrycode = document.createElement('input');
     attributeHelper(countrycode, {"type":"text", "placeholder":"country code", "name":"country"});
+    let units = createMeasurementsQuery();
     const submitButton = document.createElement('input');
     attributeHelper(submitButton, {"id":"submitLocation", "type":"submit", "value":"Submit"});
-    appendHelper(docFrag, [city, statecode, countrycode, submitButton]);
+    appendHelper(docFrag, [city, statecode, countrycode, units, submitButton]);
     form.appendChild(docFrag);
   };
   // create form needed for a search via zipcode
@@ -28,9 +29,10 @@ const generator = (() => {
     const countrycode = document.createElement('input');
     countrycode.required = true;
     attributeHelper(countrycode, {"type":"text", "placeholder":"country code", "name":"country"});
+    let units = createMeasurementsQuery();
     const submitButton = document.createElement('input');
     attributeHelper(submitButton, {"id":"submitLocation", "type":"submit", "value":"Submit"});
-    appendHelper(docFrag, [zipcode, countrycode, submitButton]);
+    appendHelper(docFrag, [zipcode, countrycode, units, submitButton]);
     form.appendChild(docFrag);
   };
   // create form needed for a search via coordinates
@@ -44,9 +46,10 @@ const generator = (() => {
     const longitude = document.createElement('input');
     longitude.required = true;
     attributeHelper(longitude, {"type":"number", "placeholder":"longitude", "min":"-180", "max":"180", "step":"0.01", "name":"longitude"});
+    let units = createMeasurementsQuery();
     const submitButton = document.createElement('input');
     attributeHelper(submitButton, {"id":"submitLocation", "type":"submit", "value":"Submit"});
-    appendHelper(docFrag, [latitude, longitude, submitButton]);
+    appendHelper(docFrag, [latitude, longitude, units, submitButton]);
     form.appendChild(docFrag);
   };
   
@@ -62,6 +65,28 @@ const generator = (() => {
     for(let i = 0; i < children.length; i++) {
       elem.appendChild(children[i]);
     };
+  };
+
+  // create the form option for deciding which system of measurements to use
+  const createMeasurementsQuery = function() {
+    const units = document.createElement('div');
+    attributeHelper(units, {"id":"chooseUnits"});
+    const unitsLabel = document.createElement('label');
+    unitsLabel.textContent = 'Choose a measurement system:';
+    attributeHelper(unitsLabel, {"for":"chooseUnits"});
+    const imperial = document.createElement('input');
+    imperial.checked = true;
+    attributeHelper(imperial, {"type":"radio","id":"imperial", "name":"unit", "value":"imperial"});
+    const imperialLabel = document.createElement('label');
+    imperialLabel.textContent = 'Imperial';
+    attributeHelper(imperialLabel, {"for":"imperial"});
+    const metric = document.createElement('input');
+    attributeHelper(metric, {"type":"radio", "id":"metric", "name":"unit", "value":"metric"});
+    const metricLabel = document.createElement('label');
+    metricLabel.textContent = 'Metric';
+    attributeHelper(metricLabel, {"for":"metric"});
+    appendHelper(units, [unitsLabel, imperial, imperialLabel, metric, metricLabel]);
+    return units;
   };
 
   // handle form upon submission prevent refresh of page
