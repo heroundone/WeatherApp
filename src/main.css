@@ -10,6 +10,15 @@
     gap: 5px;
 }
 
+#weatherDisplay {
+    color: blue;
+}
+
+#loading {
+    color: black;
+    text-align: center;
+}
+
 img {
     height: 300px;
     width: auto;
